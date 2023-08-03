@@ -17,8 +17,7 @@
   <script>
     function encurtarUrl() {
       const originalUrl = document.getElementById('originalUrl').value;
-      const serverEndpoint = 'https://encurtadordeurl.hyagocolares.repl.co';
-
+      const serverEndpoint = 'http://localhost:3000/encurtar'; // Altere para o endpoint correto do backend
 
       fetch(serverEndpoint, {
         method: 'POST',
