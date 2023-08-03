@@ -2,17 +2,55 @@
 <html>
 <head>
   <title>Encurtador de URL</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #shortenForm {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #shortenedUrl {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Encurtador de URL</h1>
-  <input type="text" id="originalUrl" placeholder="Insira o URL longo">
-  <button onclick="encurtarUrl()">Encurtar</button>
-  <p id="shortenedUrl"></p>
+  <div id="shortenForm">
+    <h1>Encurtador de URL</h1>
+    <input type="text" id="originalUrl" placeholder="Insira o URL longo">
+    <button onclick="encurtarUrl()">Encurtar</button>
+    <p id="shortenedUrl"></p>
+  </div>
 
   <script>
     function encurtarUrl() {
       const originalUrl = document.getElementById('originalUrl').value;
-      const serverEndpoint = 'https://seu-servidor.com/encurtar'; // Substitua pelo endpoint do seu encurtador de URL
+      const serverEndpoint = 'http://localhost:3000/encurtar'; // Substitua pelo endpoint do seu encurtador de URL
 
       fetch(serverEndpoint, {
         method: 'POST',
@@ -20,12 +58,12 @@
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          long_url: originalUrl,
+          longUrl: originalUrl,
         }),
       })
       .then((response) => response.json())
       .then((data) => {
-        const shortenedUrl = data.shortened_url;
+        const shortenedUrl = data.shortUrl;
         document.getElementById('shortenedUrl').innerHTML = `URL encurtado: <a href="${shortenedUrl}" target="_blank">${shortenedUrl}</a>`;
       })
       .catch((error) => {
