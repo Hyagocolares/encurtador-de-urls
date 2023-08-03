@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Encurtador de URL</title>
+</head>
+<body>
+  <h1>Encurtador de URL</h1>
+  <input type="text" id="originalUrl" placeholder="Insira o URL longo">
+  <button onclick="encurtarUrl()">Encurtar</button>
+  <p id="shortenedUrl"></p>
+
+  <script>
+    function encurtarUrl() {
+      const originalUrl = document.getElementById('originalUrl').value;
+      const serverEndpoint = 'https://seu-servidor.com/encurtar'; // Substitua pelo endpoint do seu encurtador de URL
+
+      fetch(serverEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          long_url: originalUrl,
+        }),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        const shortenedUrl = data.shortened_url;
+        document.getElementById('shortenedUrl').innerHTML = `URL encurtado: <a href="${shortenedUrl}" target="_blank">${shortenedUrl}</a>`;
+      })
+      .catch((error) => {
+        console.error('Erro ao encurtar o URL:', error);
+        document.getElementById('shortenedUrl').innerHTML = 'Erro ao encurtar o URL. Por favor, verifique o console para mais detalhes.';
+      });
+    }
+  </script>
+</body>
+</html>
