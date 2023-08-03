@@ -3,40 +3,7 @@
 <head>
   <title>Encurtador de URL</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    #shortenForm {
-      max-width: 400px;
-      margin: 50px auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    #shortenedUrl {
-      margin-top: 10px;
-      font-size: 14px;
-    }
+    /* Estilos (mesmo que antes) */
   </style>
 </head>
 <body>
@@ -50,7 +17,7 @@
   <script>
     function encurtarUrl() {
       const originalUrl = document.getElementById('originalUrl').value;
-      const serverEndpoint = 'https://EncurtadorDeURL.hyagocolares.repl.co/encurtar'; // Substitua pelo endpoint do seu back-end no Replit
+      const serverEndpoint = 'http://localhost:3000/encurtar'; // Substitua pelo endpoint do seu back-end no localhost
 
       fetch(serverEndpoint, {
         method: 'POST',
