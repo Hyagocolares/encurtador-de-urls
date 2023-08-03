@@ -17,7 +17,8 @@
   <script>
     function encurtarUrl() {
       const originalUrl = document.getElementById('originalUrl').value;
-      const serverEndpoint = 'http://localhost:3000/encurtar'; // Substitua pelo endpoint do seu back-end no localhost
+      const serverEndpoint = 'http://localhost:3000/encurtar';
+
 
       fetch(serverEndpoint, {
         method: 'POST',
