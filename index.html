@@ -14,30 +14,30 @@
     <p id="shortenedUrl"></p>
   </div>
 
-  <script>
-    function encurtarUrl() {
-      const originalUrl = document.getElementById('originalUrl').value;
-      const serverEndpoint = 'http://localhost:3000/encurtar'; // Altere para o endpoint correto do backend
+<script>
+  function encurtarUrl() {
+    const originalUrl = document.getElementById('originalUrl').value;
+    const serverEndpoint = '/encurtar'; // Altere esta linha
 
-      fetch(serverEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          longUrl: originalUrl,
-        }),
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        const shortenedUrl = data.shortUrl;
-        document.getElementById('shortenedUrl').innerHTML = `URL encurtado: <a href="${shortenedUrl}" target="_blank">${shortenedUrl}</a>`;
-      })
-      .catch((error) => {
-        console.error('Erro ao encurtar o URL:', error);
-        document.getElementById('shortenedUrl').innerHTML = 'Erro ao encurtar o URL. Por favor, verifique o console para mais detalhes.';
-      });
-    }
-  </script>
+    fetch(serverEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        longUrl: originalUrl,
+      }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      const shortenedUrl = data.shortUrl;
+      document.getElementById('shortenedUrl').innerHTML = `URL encurtado: <a href="${shortenedUrl}" target="_blank">${shortenedUrl}</a>`;
+    })
+    .catch((error) => {
+      console.error('Erro ao encurtar o URL:', error);
+      document.getElementById('shortenedUrl').innerHTML = 'Erro ao encurtar o URL. Por favor, verifique o console para mais detalhes.';
+    });
+  }
+</script>
 </body>
 </html>
