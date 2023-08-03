@@ -50,7 +50,8 @@
   <script>
     function encurtarUrl() {
       const originalUrl = document.getElementById('originalUrl').value;
-      const serverEndpoint = 'http://localhost:3000/encurtar'; // Substitua pelo endpoint do seu encurtador de URL
+      const serverEndpoint = 'https://EncurtadorDeURL.hyagocolares.repl.co/encurtar'; // Substitua pelo endpoint do seu back-end no Replit
+
 
       fetch(serverEndpoint, {
         method: 'POST',
