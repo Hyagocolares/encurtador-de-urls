@@ -17,7 +17,8 @@
 <script>
   function encurtarUrl() {
     const originalUrl = document.getElementById('originalUrl').value;
-    const serverEndpoint = '/encurtar'; // Altere esta linha
+    const serverEndpoint = 'http://localhost:3000/encurtar';
+
 
     fetch(serverEndpoint, {
       method: 'POST',
